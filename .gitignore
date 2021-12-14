@@ -16,12 +16,4 @@ cache.md5
 *.exe
 demo/data/*.inp
 *.pdf
-mat_source/pysrc/__pycache__/*
 foo.db
-*.db
-demo/readCase/*.dat
-demo/readCase/*.cas
-demo/readCgns/*.cgns
-projects/*
-3rd/projects/*
-3rd/cache.dt

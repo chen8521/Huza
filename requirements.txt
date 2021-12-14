@@ -1,7 +1,4 @@
 loguru
 PyQt5
-matplotlib
-QScintilla
-vtk==9.1.0
 pyinstaller==4.3
 toolz
