@@ -37,6 +37,9 @@ class MainWindowRun(object):
                   enable=True):
         self.window.addAction(name, text, tip, shortcut, icon, checkable, checked, slot, myactionname, enable)
 
+    def init_menu(self, rabbon_data: dict):
+        self.window.init_ribbon(rabbon_data)
+
     def _init_log(self):
         try:
             if os.path.exists(LOGFILE):

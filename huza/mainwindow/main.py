@@ -46,11 +46,7 @@ class MainWindow_Form(object):
         self.form._ribbon = RibbonWidget(self.form)
         self.form.addToolBar(self.form._ribbon)
         self._ribbon = self.form._ribbon
-        self._ribbon._ribbon_widget.tabBarClicked.connect(self.tabChange)
-        self.init_ribbon()
 
-    def tabChange(self, tab_index):
-        text = self._ribbon._ribbon_widget.tabText(tab_index)
 
 
     def setDockName(self, dock, name):
@@ -58,7 +54,7 @@ class MainWindow_Form(object):
         self.docks[dock].setVisible(True)
 
     def connect(self):
-        self.connectAction()
-        self.docks["para"].visibilityChanged.connect(self.actions["showpara"].setChecked)
-        self.docks["setup"].visibilityChanged.connect(self.actions["showsetup"].setChecked)
-        self.docks["info"].visibilityChanged.connect(self.actions["showinfo"].setChecked)
+        pass
+        # self.docks["para"].visibilityChanged.connect(self.actions["showpara"].setChecked)
+        # self.docks["setup"].visibilityChanged.connect(self.actions["showsetup"].setChecked)
+        # self.docks["info"].visibilityChanged.connect(self.actions["showinfo"].setChecked)
