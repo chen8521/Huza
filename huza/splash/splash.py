@@ -11,11 +11,11 @@ class SplashScreen(QSplashScreen):
 
     def __init__(self, picfile, extra):
         self.extra = extra
-        pixmap = QPixmap(picfile)
-        # , Qt.WindowStaysOnTopHint)
+        if isinstance(picfile, QPixmap):
+            pixmap = picfile
+        else:
+            pixmap = QPixmap(picfile)
         super(SplashScreen, self).__init__(pixmap)
-        # self.setMask(splash_pix.mask())
-        # self.raise_()
 
         self.labelAlignment = int(Qt.AlignBottom | Qt.AlignHCenter | Qt.AlignAbsolute)
         self.show()
@@ -64,4 +64,3 @@ class SplashScreen(QSplashScreen):
         self.setProgressText(80)
         time.sleep(0.01)
         self.setProgressText(100)
-

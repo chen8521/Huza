@@ -6,11 +6,6 @@ from huza.icons.iconbase import DefaultIconHandler, IconHandler
 from huza.icons.img import image_dict
 
 
-
-
-
-
-
 class IconListHandlerBase(object):
     def __init__(self):
         self.default = DefaultIconHandler()
@@ -21,7 +16,6 @@ class IconListHandlerBase(object):
             iconhandler = self._iconlist.get(attr)
             return iconhandler
         return None
-
 
 class IconListHandler(IconListHandlerBase):
     def add_img_list(self, name, img_database):

@@ -11,8 +11,6 @@ class IconHandlerBase:
     def _set_img_database(self, img_data_base):
         self._icon_database.update(img_data_base)
 
-
-class IconHandler(IconHandlerBase):
     def __getattr__(self, attr):
         if self._icon_database.get(attr) is not None:
             icon_from_db = self._icon_database[attr]
@@ -38,6 +36,34 @@ class IconHandler(IconHandlerBase):
                         QtGui.QImage().fromData(QtCore.QByteArray.fromBase64(bytes(data2, encoding='utf-8')),
                                                 format=filetype)),
                         state=QtGui.QIcon.On)
+                    self._qicon_cache[data] = icon
+
+            return icon
+        return None
+
+
+class IconHandler(IconHandlerBase):
+    def get_picmap(self, attr):
+        if self._icon_database.get(attr) is not None:
+            icon_from_db = self._icon_database[attr]
+            len_icon_db = len(icon_from_db)
+            if len_icon_db < 3:
+                data, filetype = icon_from_db
+                try:
+                    return self._qicon_cache[data]
+                except:
+                    icon = QtGui.QPixmap.fromImage(
+                        QtGui.QImage().fromData(QtCore.QByteArray.fromBase64(bytes(data, encoding='utf-8')),
+                                                format=filetype))
+                    self._qicon_cache[data] = icon
+            else:
+                data, filetype, data2 = icon_from_db
+                try:
+                    return self._qicon_cache[data]
+                except:
+                    icon = QtGui.QPixmap.fromImage(
+                        QtGui.QImage().fromData(QtCore.QByteArray.fromBase64(bytes(data, encoding='utf-8')),
+                                                format=filetype))
                     self._qicon_cache[data] = icon
 
             return icon
@@ -884,3 +910,4 @@ class DefaultIconHandler(IconHandler):
         self.tanH559 = None
         self.vectortext573 = None
         self.xugu523 = None
+        self.default_logo = None

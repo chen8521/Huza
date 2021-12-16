@@ -8,5 +8,5 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     c = IconListHandler()
     c.add_img_list('dd', image_dict)
-    dd = c.default.Calculatehortestpath_grid_671
+    dd = c.dd.And627
     print(dd)
