@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QSize, Qt, pyqtSignal
 from PyQt5.QtWidgets import QDockWidget, QWidget, QLabel, QTextEdit
 
+from huza.base.widget import MainQWidget
 
 
 def loadalldocks(self):

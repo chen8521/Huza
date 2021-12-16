@@ -11,7 +11,7 @@ from huza.icons.iconcore import IconListHandler
 from huza.mainwindow import MainWindow_Form
 from huza.ribbon.qss.default_qss import default_style
 from huza.splash import SplashScreen
-from huza.superclass.mainwindow import MyQmainWindow, except_hook
+from huza.base.mainwindow import MyQmainWindow, except_hook
 
 sys.excepthook = except_hook
 
@@ -29,8 +29,13 @@ class MainWindowRun(object):
         self.app.setStyleSheet(default_style)
         self.mainwindow = MyQmainWindow()
         self.mainwindow._set_close_waring(extra)
-        window = MainWindow_Form(extra)
-        window.setupUi(self.mainwindow)
+        self.window = MainWindow_Form(extra)
+        self.window.setupUi(self.mainwindow)
+
+    def addAction(self, name, text, tip=None, shortcut=None, icon=None, checkable=False, checked=False, slot=None,
+                  myactionname=None,
+                  enable=True):
+        self.window.addAction(name, text, tip, shortcut, icon, checkable, checked, slot, myactionname, enable)
 
     def _init_log(self):
         try:
@@ -57,7 +62,7 @@ class MainWindowRun(object):
     def set_window_logo(self, logo: QIcon):
         self.mainwindow.setWindowIcon(logo)
 
-    def window_title(self, title: str):
+    def set_window_title(self, title: str):
         self.mainwindow.setWindowTitle(title)
 
     def run(self):
