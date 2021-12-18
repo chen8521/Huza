@@ -5,6 +5,7 @@ from huza.mainwindow.main_docks import *
 from huza.mainwindow.main_ribbon import *
 from huza.ribbon.RibbonWidget import RibbonWidget
 
+
 class MainWindow_Form(object):
 
     def __init__(self, extra):
@@ -25,18 +26,18 @@ class MainWindow_Form(object):
     def addSig(self, sig, func):
         self.signals[sig] = func
 
-    loadalldocks = loadalldocks
     init_ribbon = init_ribbon
+    init_docks = init_docks
     addMain = addMain
     setMainView = setMainView
     addSig = addSig
     setParaView = setParaView
     setSetupView = setSetupView
     addAction = addAction
+
     def load(self):
         self.addRibbon()
-        self.loadalldocks()
-
+        self._init_dock_env()
 
     def signalHeadle(self, key, args):
         if key in self.signals:
@@ -48,10 +49,11 @@ class MainWindow_Form(object):
         self._ribbon = self.form._ribbon
 
 
-
-    def setDockName(self, dock, name):
-        self.docks[dock].setWindowTitle(name)
-        self.docks[dock].setVisible(True)
+    def _init_dock_env(self):
+        self.form.setDockNestingEnabled(True)
+        w = self.form.takeCentralWidget()
+        if w:
+            del w
 
     def connect(self):
         pass

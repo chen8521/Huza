@@ -2,6 +2,8 @@
 import re
 import sys
 
+from PyQt5.QtCore import Qt
+
 LOGFILE = 'huza.log'
 
 LOGGINGCONFIG = {
@@ -17,3 +19,9 @@ LOGGINGCONFIG = {
 }
 
 FLOAT_RE = re.compile('^[+-]?\d+$|^[-+]?\d*\.\d+$|^[+-]?\d+\.\d+[Ee]{1}[+-]?\d+$')
+
+DOCK_LAYOUT_ADD = 'add'  # 对应addDockWidget函数
+DOCK_LAYOUT_SPLIT = 'split'  # 对应splitDockWidget函数
+DockWidgetAreadict = {'left': Qt.LeftDockWidgetArea, 'right': Qt.RightDockWidgetArea, 'top': Qt.TopDockWidgetArea,
+                      'bottom': Qt.BottomDockWidgetArea}
+Orientiondict = {'h': Qt.Horizontal, 'v': Qt.Vertical}

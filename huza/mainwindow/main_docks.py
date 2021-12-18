@@ -2,41 +2,43 @@ from PyQt5.QtCore import QSize, Qt, pyqtSignal
 from PyQt5.QtWidgets import QDockWidget, QWidget, QLabel, QTextEdit
 
 from huza.base.widget import MainQWidget
+from huza.util.constant import *
 
 
-def loadalldocks(self):
-    self.form.setDockNestingEnabled(True)
-    self.form.takeCentralWidget()
+def init_docks(self, docks: dict, layout: list):
+    """docks = {
+        'main': QDockWidget(""),
+        'para': QDockWidget(""),
+        'setup': QDockWidget(""),
+        'info': QDockWidget(""),
+    }
+    layout = [('add', 'left', 'para'),
+         ('split', 'para', 'setup', 'h'),
+         ('split', 'setup', 'main', 'h'),
+         ('split', 'main', 'info', 'v'),
+         ]
 
-    self.docks["main"] = QDockWidget("")
-    self.docks["main"].setMinimumSize(QSize(700, 200))
-    self.docks["main"].setFeatures(QDockWidget.DockWidgetMovable | QDockWidget.DockWidgetFloatable)
+    :param self:
+    :type self:
+    :param docks_dict:
+    :type docks_dict:
+    :return:
+    :rtype:
+    """
+    for k, v in docks.items():
+        self.docks[k] = v
+    for l in layout:
+        hand = l[0]
+        if hand == DOCK_LAYOUT_ADD:
+            _, oriz, dockname = l
+            self.form.addDockWidget(DockWidgetAreadict[oriz], self.docks[dockname])
+        elif hand == DOCK_LAYOUT_SPLIT:
+            _, d1, d2, ori = l
+            self.form.splitDockWidget(self.docks[d1], self.docks[d2], Orientiondict[ori])
 
-    self.docks["para"] = QDockWidget("")
-    self.docks["para"].setMinimumWidth(280)
-    self.docks["para"].setMinimumHeight(300)
-    self.docks["para"].setFeatures(QDockWidget.AllDockWidgetFeatures)
 
-    self.docks["setup"] = QDockWidget("参数")
-    self.docks["setup"].setMinimumWidth(350)
-    self.docks["setup"].setFeatures(QDockWidget.DockWidgetMovable | QDockWidget.DockWidgetFloatable)
-    self.docks["setup"].setVisible(False)
 
-    self.docks["info"] = QDockWidget("输出")
-    self.docks["info"].setMaximumHeight(300)
-    self.docks["info"].setMinimumHeight(200)
-    self.docks["info"].setFeatures(QDockWidget.AllDockWidgetFeatures)
-    self.docks["info"].setVisible(False)
 
-    self.form.addDockWidget(Qt.LeftDockWidgetArea, self.docks["para"])
-
-    self.form.splitDockWidget(self.docks["para"], self.docks["setup"], Qt.Horizontal)
-    self.form.splitDockWidget(self.docks["setup"], self.docks["main"], Qt.Horizontal)
-    self.form.splitDockWidget(self.docks["main"], self.docks["info"], Qt.Vertical)
-
-    w = QTextEdit()
-    # w.setStyleSheet('QLabel { background-color : red; color : blue; }')
-    self.docks["info"].setWidget(w)
 
 
 def addMain(self, Form):

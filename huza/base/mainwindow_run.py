@@ -19,6 +19,7 @@ sys.excepthook = except_hook
 class MainWindowRun(object):
     def __init__(self, extra):
         self.extra = extra
+        self._init_log()
         QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
         self.app = QApplication(sys.argv)
         self._init_image_list()
@@ -37,8 +38,21 @@ class MainWindowRun(object):
                   enable=True):
         self.window.addAction(name, text, tip, shortcut, icon, checkable, checked, slot, myactionname, enable)
 
-    def init_menu(self, rabbon_data: dict):
-        self.window.init_ribbon(rabbon_data)
+    def init_menu(self, rabbons: dict):
+        self.window.init_ribbon(rabbons)
+
+    def init_docks(self, docks: dict, layout: list):
+        self.window.init_docks(docks, layout)
+
+    def get_action(self, name: str):
+        if name in self.window.actions:
+            return self.window.actions.get(name)
+        return None
+
+    def get_dock(self, name: str):
+        if name in self.window.docks:
+            return self.window.docks.get(name)
+        return None
 
     def _init_log(self):
         try:

@@ -1,23 +1,24 @@
 # coding=utf-8
 import os
+
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QPalette
+from PyQt5.QtWidgets import QDockWidget, QTextEdit, QAction
+
 from huza.base.mainwindow_run import MainWindowRun
 
 
 class Extra:
     debug = None
-    speed = None
 
-    def __init__(self, debug=False, speed=1):
+    def __init__(self, debug=False):
         self.debug = debug
-        self.speed = speed
 
 
 DEBUG = True
-speed = 1000
 
 if 'DEBUG_MODE' in os.environ:
     DEBUG = True
-    speed = 100
 
 
 def add_actions(obj):
@@ -41,11 +42,55 @@ def init_menu(obj):
     obj.init_menu(c)
 
 
+def init_docks(obj):
+    d1 = QDockWidget("1")
+    d1.setMinimumSize(QSize(700, 200))
+    d1.setFeatures(QDockWidget.DockWidgetMovable | QDockWidget.DockWidgetFloatable)
+
+    d2 = QDockWidget("2")
+    d2.setMinimumWidth(280)
+    d2.setMinimumHeight(300)
+    d2.setFeatures(QDockWidget.AllDockWidgetFeatures)
+
+    d3 = QDockWidget("3")
+    d3.setMinimumWidth(350)
+    d3.setFeatures(QDockWidget.DockWidgetMovable | QDockWidget.DockWidgetFloatable)
+
+    d4 = QDockWidget("4")
+    d4.setMaximumHeight(400)
+    d4.setFeatures(QDockWidget.AllDockWidgetFeatures)
+    docks = {
+        'main': d1,
+        'para': d2,
+        'setup': d3,
+        'info': d4,
+    }
+    layout = [('add', 'left', 'para'),
+              ('split', 'para', 'setup', 'h'),
+              ('split', 'setup', 'main', 'h'),
+              ('split', 'main', 'info', 'v'),
+              ]
+    obj.init_docks(docks, layout)
+
+
+def connect(self):
+    exit = self.get_action('exit')
+    exit.triggered.connect(self.mainwindow.close)
+
+    showpara = self.get_action('showpara')
+    para_dock = self.get_dock('para')
+    para_dock.visibilityChanged.connect(showpara.setChecked)
+    showpara.triggered.connect(para_dock.setVisible)
+
+
+
 if __name__ == '__main__':
-    extra = Extra(debug=DEBUG, speed=speed)
+    extra = Extra(debug=DEBUG)
     app = MainWindowRun(extra)
     app.set_window_logo(app.icon_list.default.Calculatehortestpath_grid_671)
     app.set_window_title('测试')
     add_actions(app)
     init_menu(app)
+    init_docks(app)
+    connect(app)
     app.run()

@@ -1,3 +1,4 @@
+from PyQt5.QtWidgets import QLabel,QLineEdit
 from loguru import logger
 
 from huza.ribbon.RibbonButton import RibbonButton
