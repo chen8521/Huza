@@ -83,7 +83,6 @@ def connect(self):
     showpara.triggered.connect(para_dock.setVisible)
 
 
-
 if __name__ == '__main__':
     extra = Extra(debug=DEBUG)
     app = MainWindowRun(extra)

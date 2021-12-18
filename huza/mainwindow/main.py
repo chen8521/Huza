@@ -17,23 +17,17 @@ class MainWindow_Form(object):
         self.docks = {}
         self.actions = {}
         self.signals = {}
-        self.paras = {}  # 保存设置页的所有参数
-        self.mains = {}  # 保存所有的主页的界面对象
-        self.setups = {}  # 保存所有的主页的界面对象
+        self.dockviews = {}  # 保存所有dock里面的widget对象
         self.load()
-        self.connect()
 
     def addSig(self, sig, func):
         self.signals[sig] = func
 
     init_ribbon = init_ribbon
     init_docks = init_docks
-    addMain = addMain
-    setMainView = setMainView
     addSig = addSig
-    setParaView = setParaView
-    setSetupView = setSetupView
     addAction = addAction
+    setDockView = setDockView
 
     def load(self):
         self.addRibbon()
@@ -48,15 +42,8 @@ class MainWindow_Form(object):
         self.form.addToolBar(self.form._ribbon)
         self._ribbon = self.form._ribbon
 
-
     def _init_dock_env(self):
         self.form.setDockNestingEnabled(True)
         w = self.form.takeCentralWidget()
         if w:
             del w
-
-    def connect(self):
-        pass
-        # self.docks["para"].visibilityChanged.connect(self.actions["showpara"].setChecked)
-        # self.docks["setup"].visibilityChanged.connect(self.actions["showsetup"].setChecked)
-        # self.docks["info"].visibilityChanged.connect(self.actions["showinfo"].setChecked)
