@@ -91,6 +91,11 @@ def connect(self):
     para_dock.visibilityChanged.connect(showpara.setChecked)
     showpara.triggered.connect(para_dock.setVisible)
 
+    showinfo = self.get_action('showinfo')
+    info_dock = self.get_dock('info')
+    info_dock.visibilityChanged.connect(showinfo.setChecked)
+    showinfo.triggered.connect(info_dock.setVisible)
+
     t1 = self.get_action('t1')
 
     def navi():
@@ -128,7 +133,6 @@ def bindsignal(app):
 
 if __name__ == '__main__':
     build_uidir('ui_file', 'auto_ui')
-
     extra = Extra(debug=DEBUG)
     app = MainWindowRun(extra)
     app.set_window_logo(app.icon_list.default.Calculatehortestpath_grid_671)

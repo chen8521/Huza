@@ -46,7 +46,6 @@ class MainWindowRun(object):
         self.window.init_docks(docks, layout)
 
     def bind_signal(self, signal, func):
-        logger.debug(dir(self.window))
         if func.__name__ in dir(self.window):
             raise Exception(f'绑定的函数[{func.__name__}]与内置函数冲突，请更换函数名称')
         setattr(self.window, func.__name__, types.MethodType(func, self.window))
