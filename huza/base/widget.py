@@ -12,12 +12,5 @@ class MainQWidget(QWidget):
             return self._ui
         return None
 
-    def __getattr__(self, item):
-        if item == 'ui':
-            return self._ui
-        else:
-            super(MainQWidget, self).__getattr__(item)
 
 
-def addSig(self, sig, func):
-    self.signals[sig] = func

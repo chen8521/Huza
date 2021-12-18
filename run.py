@@ -1,11 +1,20 @@
 # coding=utf-8
 import os
+import types
 
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import QDockWidget, QTextEdit, QAction
+from loguru import logger
 
 from huza.base.mainwindow_run import MainWindowRun
+from huza.mainwindow import MainWindow_Form
+from huza.util.buildui import build_uidir
+from huza.util.mainui import get_dock_ui
+from uis.bjtjsz import BJTJSZ_Form
+from uis.dxlmx import DXLMX_Form
+from uis.jztzsz import JZTZSZ_Form
+from uis.navigate import NaviGate_Form
 
 
 class Extra:
@@ -82,8 +91,44 @@ def connect(self):
     para_dock.visibilityChanged.connect(showpara.setChecked)
     showpara.triggered.connect(para_dock.setVisible)
 
+    t1 = self.get_action('t1')
+
+    def navi():
+        self.set_dock_view('navi', '功能', 'para', NaviGate_Form)
+
+    t1.triggered.connect(navi)
+
+
+def a(mainui: MainWindow_Form, arg):
+    logger.debug(mainui)
+    mainui.setDockView('jztzsz', 'JZTZSZ', 'setup', JZTZSZ_Form)
+
+
+def b(mainui: MainWindow_Form, arg):
+    logger.debug(mainui)
+    mainui.setDockView('bjtjsz', 'BJTJSZ', 'setup', BJTJSZ_Form)
+
+
+def c(mainui: MainWindow_Form, arg):
+    logger.debug(mainui)
+    mainui.setDockView('dxlmx', 'DXLMX', 'setup', DXLMX_Form)
+
+
+def d(mainui: MainWindow_Form, arg):
+    ui = get_dock_ui(mainui, 'setup', 'dxlmx')
+    ui.checkBox_2.setText('fffffffffffffffffff')
+
+
+def bindsignal(app):
+    app.bind_signal('a1', a)
+    app.bind_signal('a2', b)
+    app.bind_signal('a3', c)
+    app.bind_signal('a4', d)
+
 
 if __name__ == '__main__':
+    build_uidir('ui_file', 'auto_ui')
+
     extra = Extra(debug=DEBUG)
     app = MainWindowRun(extra)
     app.set_window_logo(app.icon_list.default.Calculatehortestpath_grid_671)
@@ -92,4 +137,5 @@ if __name__ == '__main__':
     init_menu(app)
     init_docks(app)
     connect(app)
+    bindsignal(app)
     app.run()

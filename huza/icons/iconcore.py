@@ -18,7 +18,7 @@ class IconListHandlerBase(object):
         return None
 
 class IconListHandler(IconListHandlerBase):
-    def add_img_list(self, name, img_database):
+    def add_icon_list(self, name, img_database):
         if name == 'default':
             raise Exception(f'不能覆盖默认的图表集 {name}')
         if name in self._iconlist:
@@ -36,6 +36,6 @@ if __name__ == '__main__':
 
     app = QApplication(sys.argv)
     c = IconListHandler()
-    c.add_img_list('dd', image_dict)
+    c.add_icon_list('dd', image_dict)
     dd = c.default.Calculatehortestpath_grid_671
     print(dd)

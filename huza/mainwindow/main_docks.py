@@ -52,7 +52,7 @@ def setDockView(self, name, displayname, dockname, formclass):
     else:
         w = MainQWidget(self.form)
         w.signal.connect(self.signalHeadle)
-        ui = formclass(self.extra)
+        ui = formclass(self)
         ui.setupUi(w)
         w._ui = ui
         dock.setWidget(w)

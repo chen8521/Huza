@@ -4,12 +4,21 @@ from huza.mainwindow.main_actions import *
 from huza.mainwindow.main_docks import *
 from huza.mainwindow.main_ribbon import *
 from huza.ribbon.RibbonWidget import RibbonWidget
-
+from huza.util.mainui import *
 
 class MainWindow_Form(object):
-
-    def __init__(self, extra):
+    init_ribbon = init_ribbon
+    init_docks = init_docks
+    addAction = addAction
+    setDockView = setDockView
+    get_extra = get_extra
+    get_action = get_action
+    get_dock = get_dock
+    get_dock_current_ui = get_dock_current_ui
+    get_dock_ui = get_dock_ui
+    def __init__(self, extra, icon_list):
         self.extra = extra
+        self.icon_list = icon_list
         super(MainWindow_Form, self).__init__()
 
     def setupUi(self, Form):
@@ -20,14 +29,8 @@ class MainWindow_Form(object):
         self.dockviews = {}  # 保存所有dock里面的widget对象
         self.load()
 
-    def addSig(self, sig, func):
-        self.signals[sig] = func
-
-    init_ribbon = init_ribbon
-    init_docks = init_docks
-    addSig = addSig
-    addAction = addAction
-    setDockView = setDockView
+    def bind_signal(self, signal, func):
+        self.signals[signal] = func
 
     def load(self):
         self.addRibbon()

@@ -1,5 +1,6 @@
 import os
 import sys
+import types
 from tkinter import messagebox, Tk
 
 from PyQt5.QtCore import Qt
@@ -22,7 +23,7 @@ class MainWindowRun(object):
         self._init_log()
         QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
         self.app = QApplication(sys.argv)
-        self._init_image_list()
+        self._init_icon_list()
         self.app.setFont(QFont("微软雅黑", 9))
         self.app.setApplicationName("")
         self.app.setOrganizationName("")
@@ -30,7 +31,7 @@ class MainWindowRun(object):
         self.app.setStyleSheet(default_style)
         self.mainwindow = MyQmainWindow()
         self.mainwindow._set_close_waring(extra)
-        self.window = MainWindow_Form(extra)
+        self.window = MainWindow_Form(extra, self.icon_list)
         self.window.setupUi(self.mainwindow)
 
     def addAction(self, name, text, tip=None, shortcut=None, icon=None, checkable=False, checked=False, slot=None,
@@ -44,6 +45,13 @@ class MainWindowRun(object):
     def init_docks(self, docks: dict, layout: list):
         self.window.init_docks(docks, layout)
 
+    def bind_signal(self, signal, func):
+        logger.debug(dir(self.window))
+        if func.__name__ in dir(self.window):
+            raise Exception(f'绑定的函数[{func.__name__}]与内置函数冲突，请更换函数名称')
+        setattr(self.window, func.__name__, types.MethodType(func, self.window))
+        self.window.bind_signal(signal, getattr(self.window, func.__name__))
+
     def get_action(self, name: str):
         if name in self.window.actions:
             return self.window.actions.get(name)
@@ -53,6 +61,9 @@ class MainWindowRun(object):
         if name in self.window.docks:
             return self.window.docks.get(name)
         return None
+
+    def set_dock_view(self, name, displayname, dockname, formclass):
+        self.window.setDockView(name, displayname, dockname, formclass)
 
     def _init_log(self):
         try:
@@ -66,8 +77,11 @@ class MainWindowRun(object):
             root.destroy()
             sys.exit(-3)
 
-    def _init_image_list(self):
+    def _init_icon_list(self):
         self.icon_list = IconListHandler()
+
+    def add_icon_list(self, name, img_database: dict):
+        self.icon_list.add_icon_list(name, img_database)
 
     def set_style_sheet(self, style: str):
         self.app.setStyleSheet(style)
