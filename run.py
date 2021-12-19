@@ -30,7 +30,7 @@ if 'DEBUG_MODE' in os.environ:
     DEBUG = True
 
 
-def add_actions(obj):
+def init_actions(obj):
     obj.addAction('showsetup', '设置面板', '显示/隐藏设置面板', checkable=True, icon=obj.icon_list.default.Adddata6)
     obj.addAction('showpara', '导航面板', '显示/隐藏导航面板', checkable=True, icon=obj.icon_list.default.cot550)
     obj.addAction('showinfo', '信息面板', '显示/隐藏信息面板', checkable=True, icon=obj.icon_list.default.bim439)
@@ -82,7 +82,7 @@ def init_docks(obj):
     obj.init_docks(docks, layout)
 
 
-def connect(self):
+def init_connect(self):
     exit = self.get_action('exit')
     exit.triggered.connect(self.mainwindow.close)
 
@@ -105,17 +105,14 @@ def connect(self):
 
 
 def a(mainui: MainWindow_Form, arg):
-    logger.debug(mainui)
     mainui.setDockView('jztzsz', 'JZTZSZ', 'setup', JZTZSZ_Form)
 
 
 def b(mainui: MainWindow_Form, arg):
-    logger.debug(mainui)
     mainui.setDockView('bjtjsz', 'BJTJSZ', 'setup', BJTJSZ_Form)
 
 
 def c(mainui: MainWindow_Form, arg):
-    logger.debug(mainui)
     mainui.setDockView('dxlmx', 'DXLMX', 'setup', DXLMX_Form)
 
 
@@ -124,7 +121,7 @@ def d(mainui: MainWindow_Form, arg):
     ui.checkBox_2.setText('fffffffffffffffffff')
 
 
-def bindsignal(app):
+def init_signal(app):
     app.bind_signal('a1', a)
     app.bind_signal('a2', b)
     app.bind_signal('a3', c)
@@ -137,9 +134,9 @@ if __name__ == '__main__':
     app = MainWindowRun(extra)
     app.set_window_logo(app.icon_list.default.Calculatehortestpath_grid_671)
     app.set_window_title('测试')
-    add_actions(app)
-    init_menu(app)
-    init_docks(app)
-    connect(app)
-    bindsignal(app)
+    app.set_init_actions_func(init_actions)
+    app.set_init_menu_func(init_menu)
+    app.set_init_docks_func(init_docks)
+    app.set_init_connect_func(init_connect)
+    app.set_init_signal_func(init_signal)
     app.run()

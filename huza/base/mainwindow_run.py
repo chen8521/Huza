@@ -90,12 +90,41 @@ class MainWindowRun(object):
         self.splash.loadProgress()
 
     def set_window_logo(self, logo: QIcon):
+        """设置软件logo"""
         self.mainwindow.setWindowIcon(logo)
 
     def set_window_title(self, title: str):
         self.mainwindow.setWindowTitle(title)
 
+    def set_init_actions_func(self, func):
+        setattr(self, 'init_actions_func', types.MethodType(func, self))
+
+    def set_init_docks_func(self, func):
+        setattr(self, 'init_docks_func', types.MethodType(func, self))
+
+    def set_init_connect_func(self, func):
+        setattr(self, 'init_connect_func', types.MethodType(func, self))
+
+    def set_init_signal_func(self, func):
+        setattr(self, 'init_signal_func', types.MethodType(func, self))
+
+    def set_init_menu_func(self, func):
+        setattr(self, 'init_menu_func', types.MethodType(func, self))
+
+    def _init_env(self):
+        if hasattr(self, 'init_actions_func'):
+            self.init_actions_func()
+        if hasattr(self, 'init_menu_func'):
+            self.init_menu_func()
+        if hasattr(self, 'init_docks_func'):
+            self.init_docks_func()
+        if hasattr(self, 'init_connect_func'):
+            self.init_connect_func()
+        if hasattr(self, 'init_signal_func'):
+            self.init_signal_func()
+
     def run(self):
+        self._init_env()
         self.mainwindow.showMaximized()
         self.mainwindow.show()
         if hasattr(self, 'splash'):

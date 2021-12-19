@@ -1,4 +1,11 @@
-def image2base64(image_path):
+def image2base64(image_path, output_path):
+    """
+
+    :param image_path: 图片路径
+    :type image_path: str
+    :return:
+    :rtype:
+    """
     import os, base64, json
     _all_data = {}
     print(f'\033[92m{2} success \033[0m')
@@ -12,9 +19,9 @@ def image2base64(image_path):
                 with open(_file, "rb") as f:
                     base64_data = str(base64.b64encode(f.read()), encoding='utf-8')
                 print(f'\033[92m{_file} success \033[0m')
-                _all_data[filename] = (base64_data, pofix.upper().strip('.'))
+                _all_data[filename_nofix] = (base64_data, pofix.upper().strip('.'))
     dt_s = json.dumps(_all_data)
-    with open('img.py', 'w') as f:
+    with open(os.path.join(output_path, 'img.py'), 'w') as f:
         f.write(f'image_dict={dt_s}')
 
 
