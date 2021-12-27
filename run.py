@@ -129,7 +129,8 @@ def init_signal(app):
 
 
 if __name__ == '__main__':
-    build_uidir('ui_file', 'auto_ui')
+    if DEBUG:
+        build_uidir('ui_file', 'auto_ui')
     extra = Extra(debug=DEBUG)
     app = MainWindowRun(extra)
     app.set_window_logo(app.icon_list.default.Calculatehortestpath_grid_671)
