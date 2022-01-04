@@ -35,9 +35,11 @@ def get_requirements():
 setup(
     name="huza",
     version=version,
-    author="hufei",
+    author='hufei',
+    author_email='hufei625@qq.com',
     packages=find_packages(include=['huza', 'huza.*']),
-    description="pyqt ui",
+    description="Self-use pyqt framework",
+    license="MIT License",
     install_requires=get_requirements(),
     zip_safe=True,
     data_files=[('nsis', ['nsis.nsi']),
@@ -47,4 +49,15 @@ setup(
             'huza=huza.cli.shell:main',
         ]
     },
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Topic :: System :: Networking',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9'
+    ]
 )
