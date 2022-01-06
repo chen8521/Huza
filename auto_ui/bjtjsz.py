@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'uis\bjtjsz.ui'
+# Form implementation generated from reading ui file 'ui_file\bjtjsz.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
