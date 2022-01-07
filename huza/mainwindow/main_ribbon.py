@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QLabel,QLineEdit
+from PyQt5.QtWidgets import QLabel, QLineEdit
 from loguru import logger
 
 from huza.ribbon.RibbonButton import RibbonButton
@@ -36,6 +36,8 @@ def init_ribbon(self, ribbondata: dict):
                         else:
                             logger.warning(f'pane[{pane_name}]格式错误')
                             continue
+                        if action_name not in self.actions:
+                            raise Exception(f'Action [{action_name}] is not existed!')
                         pane.add_ribbon_widget(RibbonButton(self.form, self.actions[action_name], islagre))
                     elif isinstance(ribbonbutton, str):
                         action_name = ribbonbutton

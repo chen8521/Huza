@@ -43,6 +43,7 @@ def setDockView(self, name, displayname, dockname, formclass):
     if dock.windowTitle() == name:
         return
     dock.setWindowTitle(displayname)
+    dock.setVisible(True)
     dockviews = self.dockviews[dockname]
     if name in dockviews:
         w = dockviews.get(name)

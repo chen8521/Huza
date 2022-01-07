@@ -51,6 +51,9 @@ class MainWindowRun(object):
         setattr(self.window, func.__name__, types.MethodType(func, self.window))
         self.window.bind_signal(signal, getattr(self.window, func.__name__))
 
+    def bind_func(self, func):
+        setattr(self.window, func.__name__, types.MethodType(func, self.window))
+
     def get_action(self, name: str):
         if name in self.window.actions:
             return self.window.actions.get(name)
