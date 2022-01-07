@@ -17,7 +17,7 @@ def get_dock(mainui, dock_name:str):
 
 def get_dock_current_ui(mainui, dock_name:str):
     if dock_name in mainui.docks:
-        return mainui.docks.get(dock_name).ui()
+        return mainui.docks.get(dock_name).widget().ui()
     return None
 
 

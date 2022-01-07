@@ -51,6 +51,11 @@ class MainWindowRun(object):
         setattr(self.window, func.__name__, types.MethodType(func, self.window))
         self.window.bind_signal(signal, getattr(self.window, func.__name__))
 
+    def __getattr__(self, attr):
+        if hasattr(self.window, attr):
+            return getattr(self.window, attr)
+        return super(MainWindowRun, self).__getattr__(attr)
+
     def bind_func(self, func):
         setattr(self.window, func.__name__, types.MethodType(func, self.window))
 
