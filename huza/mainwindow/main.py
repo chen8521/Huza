@@ -32,6 +32,9 @@ class MainWindow_Form(object):
     def bind_signal(self, signal, func):
         self.signals[signal] = func
 
+    def emit(self, signal, data):
+        self.form.signal.emit(signal, data)
+
     def load(self):
         self.addRibbon()
         self._init_dock_env()
