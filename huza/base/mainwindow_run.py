@@ -33,6 +33,7 @@ class MainWindowRun(object):
         self.mainwindow._set_close_waring(extra)
         self.window = MainWindow_Form(extra, self.icon_list)
         self.window.setupUi(self.mainwindow)
+        self.mainwindow.signal.connect(self.window.signalHeadle)
 
     def addAction(self, name, text, tip=None, shortcut=None, icon=None, checkable=False, checked=False, slot=None,
                   myactionname=None,

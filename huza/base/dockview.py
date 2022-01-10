@@ -8,6 +8,9 @@ class DockView(object):
         self.extra = get_extra(mainui)
         self.iconlist = self.get_icon_list()  # IconListHandler
 
+    def set_dock_view(self, name, displayname, dockname, formclass):
+        self.mainui.setDockView(name, displayname, dockname, formclass)
+
     def get_icon_list(self):
         return self.mainui.icon_list
 
