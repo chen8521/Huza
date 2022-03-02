@@ -46,6 +46,9 @@ class MainWindowRun(object):
     def init_docks(self, docks: dict, layout: list):
         self.window.init_docks(docks, layout)
 
+    def get_ribbon_tab(self):
+        return self.window.get_ribbon_tab()
+
     def bind_signal(self, signal, func):
         if func.__name__ in dir(self.window):
             raise Exception(f'绑定的函数[{func.__name__}]与内置函数冲突，请更换函数名称')

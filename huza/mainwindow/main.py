@@ -1,10 +1,12 @@
 # coding=utf-8
+from PyQt5.QtWidgets import QTabWidget
 
 from huza.mainwindow.main_actions import *
 from huza.mainwindow.main_docks import *
 from huza.mainwindow.main_ribbon import *
 from huza.ribbon.RibbonWidget import RibbonWidget
 from huza.util.mainui import *
+
 
 class MainWindow_Form(object):
     init_ribbon = init_ribbon
@@ -16,6 +18,7 @@ class MainWindow_Form(object):
     get_dock = get_dock
     get_dock_current_ui = get_dock_current_ui
     get_dock_ui = get_dock_ui
+
     def __init__(self, extra, icon_list):
         self.extra = extra
         self.icon_list = icon_list
@@ -47,6 +50,9 @@ class MainWindow_Form(object):
         self.form._ribbon = RibbonWidget(self.form)
         self.form.addToolBar(self.form._ribbon)
         self._ribbon = self.form._ribbon
+
+    def get_ribbon_tab(self) -> QTabWidget:
+        return self.form._ribbon._ribbon_widget
 
     def _init_dock_env(self):
         self.form.setDockNestingEnabled(True)
