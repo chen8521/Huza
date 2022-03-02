@@ -13,6 +13,7 @@ from huza.mainwindow import MainWindow_Form
 from huza.ribbon.qss.default_qss import default_style
 from huza.splash import SplashScreen
 from huza.base.mainwindow import MyQmainWindow, except_hook
+from huza.util.mainui import *
 
 sys.excepthook = except_hook
 
@@ -74,6 +75,12 @@ class MainWindowRun(object):
         if name in self.window.docks:
             return self.window.docks.get(name)
         return None
+
+    def get_dock_ui(self, dock_name, ui_name):
+        return get_dock_ui(self.window, dock_name, ui_name)
+
+    def get_dock_current_ui(self, dock_name):
+        return get_dock_current_ui(self.window, dock_name)
 
     def set_dock_view(self, name, displayname, dockname, formclass):
         self.window.setDockView(name, displayname, dockname, formclass)
