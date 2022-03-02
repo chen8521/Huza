@@ -1,3 +1,4 @@
+from huza.icons.iconcore import IconListHandler
 from huza.mainwindow import MainWindow_Form
 from huza.util.mainui import *
 
@@ -11,7 +12,7 @@ class DockView(object):
     def set_dock_view(self, name, displayname, dockname, formclass):
         self.mainui.setDockView(name, displayname, dockname, formclass)
 
-    def get_icon_list(self):
+    def get_icon_list(self)-> IconListHandler:
         return self.mainui.icon_list
 
     def emit(self, signal, data):

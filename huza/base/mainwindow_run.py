@@ -5,7 +5,7 @@ from tkinter import messagebox, Tk
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont, QPixmap, QIcon
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QAction, QDockWidget
 from loguru import logger
 from huza.util.constant import LOGGINGCONFIG, LOGFILE
 from huza.icons.iconcore import IconListHandler
@@ -58,14 +58,16 @@ class MainWindowRun(object):
         return super(MainWindowRun, self).__getattr__(attr)
 
     def bind_func(self, func):
+        if func.__name__ in dir(self.window):
+            raise Exception(f'绑定的函数[{func.__name__}]与内置函数冲突，请更换函数名称')
         setattr(self.window, func.__name__, types.MethodType(func, self.window))
 
-    def get_action(self, name: str):
+    def get_action(self, name: str) -> QAction:
         if name in self.window.actions:
             return self.window.actions.get(name)
         return None
 
-    def get_dock(self, name: str):
+    def get_dock(self, name: str) -> QDockWidget:
         if name in self.window.docks:
             return self.window.docks.get(name)
         return None
