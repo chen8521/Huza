@@ -47,6 +47,9 @@ class MainWindowRun(object):
     def init_docks(self, docks: dict, layout: list):
         self.window.init_docks(docks, layout)
 
+    def emit(self, signal, data):
+        self.window.emit(signal, data)
+
     def get_ribbon_tab(self):
         return self.window.get_ribbon_tab()
 

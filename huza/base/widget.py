@@ -13,4 +13,5 @@ class MainQWidget(QWidget):
         return None
 
 
-
+class PopQWidget(QWidget):
+    signal = pyqtSignal(object, object)

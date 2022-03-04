@@ -8,7 +8,6 @@ def image2base64(image_path, output_path):
     """
     import os, base64, json
     _all_data = {}
-    print(f'\033[92m{2} success \033[0m')
     for root, dirs, files in os.walk(image_path):
         for f in files:
             _file = os.path.join(root, f)
