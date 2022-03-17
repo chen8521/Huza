@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtWidgets import QWidget, QItemDelegate, QPushButton, QHBoxLayout, QTableView
+from PyQt5.QtWidgets import QWidget, QItemDelegate, QPushButton, QHBoxLayout, QTableView, QDialog
 from loguru import logger
 
 
@@ -13,5 +13,5 @@ class MainQWidget(QWidget):
         return None
 
 
-class PopQWidget(QWidget):
+class PopQDialog(QDialog):
     signal = pyqtSignal(object, object)
