@@ -153,7 +153,7 @@ class MainWindowRun(object):
     def run(self):
         self._init_env()
         self.mainwindow.showMaximized()
-        self.mainwindow.show()
         if hasattr(self, 'splash'):
             self.splash.finish(self.mainwindow)
         self.app.exec_()
+

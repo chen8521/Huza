@@ -259,5 +259,17 @@ QGroupBox::title {
     background-color: #F0F0F0;
 }
 
+/* =============================================== */
+/* QStackedWidget                                        */
+/* =============================================== */
+QStackedWidget {
+    background-color: #F0F0F0;
+    border: 1px solid #999999;
+    border-radius: 4px;
+    margin-top: 0.5em;
+    color: #222;
+}
+
+
 
 """
