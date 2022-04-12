@@ -1,4 +1,4 @@
-default_style="""
+default_style = """
 
 
 
@@ -55,7 +55,7 @@ QLabel {
     background: transparent;
     border: 1px solid transparent;
     padding: 1px;
-    
+
 }
 
 
@@ -78,7 +78,7 @@ QLineEdit {
     border-radius: 2px;
     border-style: inset;
     padding: 0 1px;
-    
+
 }
 
 QLineEdit:hover{
@@ -264,9 +264,6 @@ QGroupBox::title {
 /* =============================================== */
 QStackedWidget {
     background-color: #F0F0F0;
-    border: 1px solid #999999;
-    border-radius: 4px;
-    margin-top: 0.5em;
     color: #222;
 }
 
