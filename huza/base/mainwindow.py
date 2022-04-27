@@ -9,14 +9,17 @@ from loguru import logger
 
 class MyQmainWindow(QMainWindow):
     signal = pyqtSignal(object, object)
+
     def _set_close_waring(self, extra):
         self.extra = extra
 
     def closeEvent(self, QCloseEvent):
-        if hasattr(self, 'closeprocess'):
-            self.closeprocess()
+        if hasattr(self, '_close_process'):
+            self._close_process()
         if not self.extra.debug:
-            r = QMessageBox.question(self, '关闭确认', '是否关闭软件？',
+            title = '关闭确认' if not hasattr(self, '_close_title') else self._close_title
+            msg = '是否关闭软件？' if not hasattr(self, '_close_msg') else self._close_msg
+            r = QMessageBox.question(self, title, msg,
                                      QMessageBox.Yes | QMessageBox.No)
             if r == QMessageBox.Yes:
                 return super(MyQmainWindow, self).closeEvent(QCloseEvent)

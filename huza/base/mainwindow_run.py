@@ -120,6 +120,13 @@ class MainWindowRun(object):
         """设置软件logo"""
         self.mainwindow.setWindowIcon(logo)
 
+    def set_close_process(self, func, title=None, msg=None):
+        setattr(self.mainwindow, '_close_process', types.MethodType(func, self.mainwindow))
+        if title:
+            self.mainwindow._close_title = title
+        if msg:
+            self.mainwindow._close_msg = msg
+
     def set_window_title(self, title: str):
         self.mainwindow.setWindowTitle(title)
 
@@ -156,4 +163,3 @@ class MainWindowRun(object):
         if hasattr(self, 'splash'):
             self.splash.finish(self.mainwindow)
         self.app.exec_()
-
