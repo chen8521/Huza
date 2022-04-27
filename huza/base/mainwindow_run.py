@@ -31,9 +31,9 @@ class MainWindowRun(object):
         self.app.setOrganizationDomain("")
         self.app.setStyleSheet(default_style)
         self.mainwindow = MyQmainWindow()
-        self.mainwindow._set_close_waring(extra)
         self.window = MainWindow_Form(extra, self.icon_list)
         self.window.setupUi(self.mainwindow)
+        self.mainwindow._set_close_info(self)
         self.mainwindow.signal.connect(self.window.signalHeadle)
 
     def addAction(self, name, text, tip=None, shortcut=None, icon=None, checkable=False, checked=False, slot=None,
@@ -121,11 +121,11 @@ class MainWindowRun(object):
         self.mainwindow.setWindowIcon(logo)
 
     def set_close_process(self, func, title=None, msg=None):
-        setattr(self.mainwindow, '_close_process', types.MethodType(func, self.mainwindow))
+        setattr(self, '_close_process', types.MethodType(func, self))
         if title:
-            self.mainwindow._close_title = title
+            self._close_title = title
         if msg:
-            self.mainwindow._close_msg = msg
+            self._close_msg = msg
 
     def set_window_title(self, title: str):
         self.mainwindow.setWindowTitle(title)

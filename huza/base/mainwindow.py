@@ -10,15 +10,15 @@ from loguru import logger
 class MyQmainWindow(QMainWindow):
     signal = pyqtSignal(object, object)
 
-    def _set_close_waring(self, extra):
-        self.extra = extra
+    def _set_close_info(self, mainform):
+        self.mainform = mainform
 
     def closeEvent(self, QCloseEvent):
-        if hasattr(self, '_close_process'):
-            self._close_process()
-        if not self.extra.debug:
-            title = '关闭确认' if not hasattr(self, '_close_title') else self._close_title
-            msg = '是否关闭软件？' if not hasattr(self, '_close_msg') else self._close_msg
+        if hasattr(self.mainform, '_close_process'):
+            self.mainform._close_process()
+        if not self.mainform.extra.debug:
+            title = '关闭确认' if not hasattr(self.mainform, '_close_title') else self.mainform._close_title
+            msg = '是否关闭软件？' if not hasattr(self.mainform, '_close_msg') else self.mainform._close_msg
             r = QMessageBox.question(self, title, msg,
                                      QMessageBox.Yes | QMessageBox.No)
             if r == QMessageBox.Yes:
