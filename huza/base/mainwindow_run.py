@@ -120,8 +120,12 @@ class MainWindowRun(object):
         """设置软件logo"""
         self.mainwindow.setWindowIcon(logo)
 
-    def set_close_process(self, func, title=None, msg=None):
+    def set_close_func(self, func, loc=0b100):
+        """设置关闭时需要执行的函数以及位置，loc=000"""
         setattr(self, '_close_process', types.MethodType(func, self))
+        self._close_loc = loc
+
+    def set_close_info(self, title=None, msg=None):
         if title:
             self._close_title = title
         if msg:

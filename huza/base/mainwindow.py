@@ -14,7 +14,7 @@ class MyQmainWindow(QMainWindow):
         self.mainform = mainform
 
     def closeEvent(self, QCloseEvent):
-        if hasattr(self.mainform, '_close_process'):
+        if (self.mainform._close_loc & 0b100 ) >> 2 and hasattr(self.mainform, '_close_process'):
             self.mainform._close_process()
         if not self.mainform.extra.debug:
             title = '关闭确认' if not hasattr(self.mainform, '_close_title') else self.mainform._close_title
@@ -22,8 +22,13 @@ class MyQmainWindow(QMainWindow):
             r = QMessageBox.question(self, title, msg,
                                      QMessageBox.Yes | QMessageBox.No)
             if r == QMessageBox.Yes:
+
+                if (self.mainform._close_loc & 0b010) >> 1 and hasattr(self.mainform, '_close_process'):
+                    self.mainform._close_process()
                 return super(MyQmainWindow, self).closeEvent(QCloseEvent)
             else:
+                if (self.mainform._close_loc & 0b001) >> 0  and hasattr(self.mainform, '_close_process'):
+                    self.mainform._close_process()
                 QCloseEvent.ignore()
 
 

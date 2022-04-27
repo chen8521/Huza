@@ -30,5 +30,6 @@ if __name__ == '__main__':
     app.set_init_docks_func(init_docks)
     app.set_init_connect_func(init_connect)
     app.set_init_signal_func(init_signal)
-    app.set_close_process(lambda s: print(s), 'test', 'test')
+    app.set_close_func(lambda s: print(s))
+    app.set_close_info('test', 'test')
     app.run()
