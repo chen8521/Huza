@@ -149,7 +149,15 @@ class MainWindowRun(object):
     def set_init_menu_func(self, func):
         setattr(self, 'init_menu_func', types.MethodType(func, self))
 
+    def set_init_before_func(self, func):
+        setattr(self, 'init_before_func', types.MethodType(func, self))
+
+    def set_init_after_func(self, func):
+        setattr(self, 'init_after_func', types.MethodType(func, self))
+
     def _init_env(self):
+        if hasattr(self, 'init_before_func'):
+            self.init_before_func()
         if hasattr(self, 'init_actions_func'):
             self.init_actions_func()
         if hasattr(self, 'init_menu_func'):
@@ -160,6 +168,8 @@ class MainWindowRun(object):
             self.init_connect_func()
         if hasattr(self, 'init_signal_func'):
             self.init_signal_func()
+        if hasattr(self, 'init_after_func'):
+            self.init_after_func()
 
     def run(self):
         self._init_env()
