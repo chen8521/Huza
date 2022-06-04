@@ -7,15 +7,15 @@ from uis.jztzsz import JZTZSZ_Form
 
 
 def a(mainui: MainWindow_Form, arg):
-    mainui.setDockView('jztzsz', 'JZTZSZ', 'setup', JZTZSZ_Form)
+    mainui.set_dock_view('jztzsz', 'JZTZSZ', 'setup', JZTZSZ_Form)
 
 
 def b(mainui: MainWindow_Form, arg):
-    mainui.setDockView('bjtjsz', 'BJTJSZ', 'setup', BJTJSZ_Form)
+    mainui.set_dock_view('bjtjsz', 'BJTJSZ', 'setup', BJTJSZ_Form)
 
 
 def c(mainui: MainWindow_Form, arg):
-    mainui.setDockView('dxlmx', 'DXLMX', 'setup', DXLMX_Form)
+    mainui.set_dock_view('dxlmx', 'DXLMX', 'setup', DXLMX_Form)
 
 
 def d(mainui: MainWindow_Form, arg):

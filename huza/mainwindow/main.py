@@ -12,7 +12,7 @@ class MainWindow_Form(object):
     init_ribbon = init_ribbon
     init_docks = init_docks
     addAction = addAction
-    setDockView = setDockView
+    set_dock_view = setDockView
     get_extra = get_extra
     get_action = get_action
     get_dock = get_dock
