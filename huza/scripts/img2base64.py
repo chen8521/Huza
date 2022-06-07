@@ -14,7 +14,7 @@ def image2base64(image_path, output_path):
             _, filename = os.path.split(_file)
             filename_nofix, _ = os.path.splitext(filename)
             _, pofix = os.path.splitext(_file)
-            if pofix.lower() in ('.png', '.jpg', '.jpeg', '.gif', '.svg'):
+            if pofix.lower() in ('.png', '.jpg', '.jpeg', '.gif', '.svg', '.bmp'):
                 with open(_file, "rb") as f:
                     base64_data = str(base64.b64encode(f.read()), encoding='utf-8')
                 print(f'\033[92m{_file} success \033[0m')
