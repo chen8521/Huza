@@ -93,11 +93,12 @@ QLineEdit[echoMode="2"]{
 }
 
 QLineEdit:read-only {
-
+     color: #353535;
+    background: lightgray;
 }
 
 QLineEdit:disabled{
-    color: lightgray;
+    color: #555555;
     background: lightgray;
 }
 
