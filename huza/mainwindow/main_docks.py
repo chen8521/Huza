@@ -50,6 +50,7 @@ def setDockView(self, name, displayname, dockname, formclass):
         dock.setWidget(w)
         if hasattr(w, 'refresh'):
             w.refresh()
+        return w.ui()
     else:
         w = MainQWidget(self.form)
         w.signal.connect(self.signalHeadle)
@@ -59,3 +60,4 @@ def setDockView(self, name, displayname, dockname, formclass):
         w._ui = ui
         dock.setWidget(w)
         dockviews[name] = w
+        return ui

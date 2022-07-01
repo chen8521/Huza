@@ -6,7 +6,7 @@ import codecs
 import os
 import re
 
-#1. python setup.py bdist_egg
+#1. python setup.py bdist_wheel
 #2. wheel convert huza-0.1.2-py36.egg
 #3. twine upload huza-0.1.2-py36-none-any.whl
 
