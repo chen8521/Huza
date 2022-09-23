@@ -1,6 +1,6 @@
 version: '1.0'
 name: master-pipeline
-displayName: MasterPipeline
+displayName: 主线构建
 stages:
   - stage: 
     name: compile

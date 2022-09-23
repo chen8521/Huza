@@ -18,3 +18,4 @@ demo/data/*.inp
 *.pdf
 foo.db
 venv2/*
+venv*
