@@ -6,9 +6,9 @@ import codecs
 import os
 import re
 
-#1. python setup.py bdist_wheel
-#2. wheel convert huza-0.1.2-py36.egg
-#3. twine upload huza-0.1.2-py36-none-any.whl
+# 1. python setup.py bdist_wheel
+# 2. wheel convert huza-0.1.2-py36.egg
+# 3. twine upload huza-0.1.2-py36-none-any.whl
 
 try:
     from setuptools import setup, find_packages
@@ -36,9 +36,10 @@ def get_requirements():
     file_data = open('requirements.txt').read().splitlines()
     return file_data
 
+
 here = os.path.abspath(os.path.dirname(__file__))
 
-with codecs.open(os.path.join(here, 'README.rst'), 'r','utf-8') as handle:
+with codecs.open(os.path.join(here, 'README.rst'), 'r', 'utf-8') as handle:
     readme = handle.read()
 
 setup(
@@ -51,7 +52,8 @@ setup(
     license="MIT License",
     install_requires=get_requirements(),
     zip_safe=True,
-long_description=readme,
+    long_description=readme,
+    url='https://github.com/huyidao625/Huza',
     data_files=[('nsis', ['nsis.nsi']),
                 ],
     entry_points={
