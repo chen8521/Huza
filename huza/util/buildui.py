@@ -2,6 +2,7 @@
 import subprocess, os, codecs, json
 from loguru import logger
 
+
 def getFileMd5(filename):
     import hashlib
     if not os.path.isfile(filename):
@@ -39,6 +40,10 @@ def buildui(input, name, output, md5):
 
 
 def build_uidir(uipath, outpath):
+    if not os.path.exists(outpath):
+        os.makedirs(outpath)
+        with open(os.path.join(outpath, '__init__.py'), 'w') as f:
+            f.write('import os')
     _uics = []
     for i in os.listdir(uipath):
         _n, _p = os.path.splitext(i)
