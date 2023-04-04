@@ -31,6 +31,14 @@ def get_dock_ui(mainui, dock_name: str, uiname: str):
     return None
 
 
+def get_ui(mainui, uiname: str):
+    for k, v in mainui.dockviews.items():
+        for ui_name, ui_f in v.items():
+            if uiname == ui_name:
+                return ui_f.ui()
+    return None
+
+
 def del_dock_ui(mainui, dock_name: str, uiname: str):
     if dock_name in mainui.dockviews:
         dockviews = mainui.dockviews.get(dock_name)

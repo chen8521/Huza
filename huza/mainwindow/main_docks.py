@@ -39,6 +39,14 @@ def init_docks(self, docks: dict, layout: list):
 
 
 def setDockView(self, name, displayname, dockname, formclass):
+    def _check_name_exist(name):
+        """保证dockviews下的id唯一"""
+        for k, v in self.dockviews.items():
+            for uname, ui in v.items():
+                if uname == name:
+                    return k
+        return None
+
     dock = self.docks.get(dockname)
     if dock.windowTitle() == name:
         return
@@ -52,6 +60,10 @@ def setDockView(self, name, displayname, dockname, formclass):
             w.refresh()
         return w.ui()
     else:
+        nameexist = _check_name_exist(name)
+        if nameexist is not None:
+            raise Exception(f'dockviews已经存在相同的id，位于[{nameexist}]')
+
         w = MainQWidget(self.form)
         w.signal.connect(self.signalHeadle)
         ui = formclass(self)

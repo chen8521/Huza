@@ -85,6 +85,9 @@ class MainWindowRun(object):
     def del_dock_ui(self, dock_name, ui_name):
         return del_dock_ui(self.window, dock_name, ui_name)
 
+    def get_ui(self, ui_name):
+        return get_ui(self.window, ui_name)
+
     def get_dock_current_ui(self, dock_name):
         return get_dock_current_ui(self.window, dock_name)
 

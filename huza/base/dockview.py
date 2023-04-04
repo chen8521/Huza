@@ -12,7 +12,7 @@ class DockView(object):
     def set_dock_view(self, name, displayname, dockname, formclass):
         return self.mainui.set_dock_view(name, displayname, dockname, formclass)
 
-    def get_icon_list(self)-> IconListHandler:
+    def get_icon_list(self) -> IconListHandler:
         return self.mainui.icon_list
 
     def emit(self, signal, data):
@@ -32,3 +32,6 @@ class DockView(object):
 
     def get_dock_ui(self, dock_name, ui_name):
         return get_dock_ui(self.mainui, dock_name, ui_name)
+
+    def get_ui(self, ui_name):
+        return get_ui(self.mainui, ui_name)
