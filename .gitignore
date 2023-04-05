@@ -19,3 +19,4 @@ demo/data/*.inp
 foo.db
 venv2/*
 venv*
+auto_ui/*
