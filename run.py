@@ -10,7 +10,7 @@ class Extra:
         self.debug = debug
 
 
-DEBUG = False
+DEBUG = True
 if 'DEBUG_MODE' in os.environ:
     DEBUG = True
 

@@ -18,6 +18,9 @@ class DockView(object):
     def emit(self, signal, data):
         self.form.signal.emit(signal, data)
 
+    def bind_signal(self, form: QWidget):
+        form.signal.connect(self.form.signal)
+
     def get_extra(self):
         return get_extra(self.mainui)
 
