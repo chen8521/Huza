@@ -1,6 +1,6 @@
 def init_menu(app):
     menu = {'开始': [
-        {'测试': [('t1', True), ('t2', True)]},
+        {'测试': [('t1', True), ('t2', True), ('t3', True, True)]},
         {'关闭': [('exit', True)]}
     ],
         '视图': [

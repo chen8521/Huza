@@ -30,14 +30,20 @@ def init_ribbon(self, ribbondata: dict):
                 for ribbonbutton in pane_data:
                     if isinstance(ribbonbutton, list) or isinstance(ribbonbutton, tuple):
                         if len(ribbonbutton) == 1:
-                            action_name, islagre = ribbonbutton, True
+                            action_name, islagre, isDebug = ribbonbutton, True, False
                         elif len(ribbonbutton) == 2:
-                            action_name, islagre = ribbonbutton
+                            ribbonbutton = list(ribbonbutton)
+                            ribbonbutton.append(False)
+                            action_name, islagre, isDebug = ribbonbutton
+                        elif len(ribbonbutton) == 3:
+                            action_name, islagre, isDebug = ribbonbutton
                         else:
                             logger.warning(f'pane[{pane_name}]格式错误')
                             continue
                         if action_name not in self.actions:
                             raise Exception(f'Action [{action_name}] is not existed!')
+                        if not self.extra.debug and isDebug:
+                            continue
                         pane.add_ribbon_widget(RibbonButton(self.form, self.actions[action_name], islagre))
                     elif isinstance(ribbonbutton, str):
                         action_name = ribbonbutton

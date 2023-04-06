@@ -5,4 +5,5 @@ def init_actions(app):
     app.addAction('exit', '退出', '退出', icon=app.icon_list.default.Stop37)
     app.addAction('t1', 't1', icon=app.icon_list.default.Unit220)
     app.addAction('t2', 't2', icon=app.icon_list.default.Zoom100)
+    app.addAction('t3', 't3', icon=app.icon_list.default.Zoom100)
     app.addAction('showicon', '显示图标', '显示图标', checkable=False, icon=app.icon_list.default.CMYKmode566)
