@@ -1,7 +1,7 @@
 # coding=utf-8
 import re, os, time, codecs
-from PyQt5 import QtWidgets, QtCore
-from PyQt5.QtGui import *
+from qtpy import QtWidgets, QtCore
+from qtpy.QtGui import *
 from loguru import logger
 from auto_ui.dxlmx import Ui_Form
 from huza.base.dockview import DockView

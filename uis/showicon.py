@@ -1,9 +1,9 @@
 # coding=utf-8
 import re, os, time, codecs
-from PyQt5 import QtWidgets, QtCore
-from PyQt5.QtCore import QSize
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import QListWidget, QListWidgetItem, QApplication, QVBoxLayout, QLineEdit, QWidget, QHBoxLayout, \
+from qtpy import QtWidgets, QtCore
+from qtpy.QtCore import QSize
+from qtpy.QtGui import *
+from qtpy.QtWidgets import QListWidget, QListWidgetItem, QApplication, QVBoxLayout, QLineEdit, QWidget, QHBoxLayout, \
     QLabel
 from loguru import logger
 from auto_ui.showicon import Ui_Form

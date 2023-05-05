@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import *
+from qtpy.QtWidgets import *
 
 from huza.ribbon.RibbonTab import RibbonTab
 from huza.ribbon.qss.ribbonqss import ribbonqss

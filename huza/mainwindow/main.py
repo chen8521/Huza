@@ -1,5 +1,5 @@
 # coding=utf-8
-from PyQt5.QtWidgets import QTabWidget
+from qtpy.QtWidgets import QTabWidget
 
 from huza.mainwindow.main_actions import *
 from huza.mainwindow.main_docks import *

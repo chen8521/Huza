@@ -1,13 +1,13 @@
-from PyQt5 import QtGui
-from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtWidgets import QWidget, QItemDelegate, QPushButton, QHBoxLayout, QTableView, QDialog
+from qtpy import QtGui
+from qtpy.QtCore import Qt, Signal
+from qtpy.QtGui import QIcon, QPixmap
+from qtpy.QtWidgets import QWidget, QItemDelegate, QPushButton, QHBoxLayout, QTableView, QDialog
 from loguru import logger
 
 
 class MainQWidget(QWidget):
-    signal = pyqtSignal(object, object)
-    keypresssignal = pyqtSignal(object)
+    signal = Signal(object, object)
+    keypresssignal = Signal(object)
 
     def keyPressEvent(self, a0: QtGui.QKeyEvent) -> None:
         self.keypresssignal.emit(a0)
@@ -20,4 +20,4 @@ class MainQWidget(QWidget):
 
 
 class PopQDialog(QDialog):
-    signal = pyqtSignal(object, object)
+    signal = Signal(object, object)

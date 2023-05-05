@@ -1,5 +1,4 @@
 import re
-from PyQt5 import QtGui, QtCore
 from loguru import logger
 
 from huza.icons.iconbase import DefaultIconHandler, IconHandler

@@ -2,7 +2,7 @@
 import re
 import sys
 
-from PyQt5.QtCore import Qt
+from qtpy.QtCore import Qt
 
 LOGFILE = 'huza.log'
 

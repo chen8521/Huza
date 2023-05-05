@@ -3,9 +3,9 @@ import sys
 import types
 from tkinter import messagebox, Tk
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont, QPixmap, QIcon
-from PyQt5.QtWidgets import QApplication, QAction, QDockWidget
+from qtpy.QtCore import Qt
+from qtpy.QtGui import QFont, QPixmap, QIcon
+from qtpy.QtWidgets import QApplication, QAction, QDockWidget
 from loguru import logger
 from huza.util.constant import LOGGINGCONFIG, LOGFILE
 from huza.icons.iconcore import IconListHandler

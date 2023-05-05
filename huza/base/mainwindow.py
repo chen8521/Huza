@@ -1,14 +1,14 @@
 import sys
 
-from PyQt5.QtCore import pyqtSignal
-from PyQt5.QtWidgets import QMessageBox, QMainWindow
+from qtpy.QtCore import Signal
+from qtpy.QtWidgets import QMessageBox, QMainWindow
 from tkinter import Tk, messagebox
 
 from loguru import logger
 
 
 class MyQmainWindow(QMainWindow):
-    signal = pyqtSignal(object, object)
+    signal = Signal(object, object)
 
     def _set_close_info(self, mainform):
         self.mainform = mainform

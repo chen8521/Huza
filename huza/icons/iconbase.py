@@ -1,5 +1,5 @@
 from huza.icons.img import image_dict
-from PyQt5 import QtGui, QtCore
+from qtpy import QtGui, QtCore
 
 
 class IconHandlerBase:

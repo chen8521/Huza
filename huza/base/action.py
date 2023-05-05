@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QAction
+from qtpy.QtWidgets import QAction
 
 
 def createAction(text, parent, tip=None, shortcut=None, icon=None, checkable=False, checked=False, slot=None,

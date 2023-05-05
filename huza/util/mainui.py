@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QAction, QDockWidget, QWidget
+from qtpy.QtWidgets import QAction, QDockWidget, QWidget
 
 
 def get_extra(mainui):

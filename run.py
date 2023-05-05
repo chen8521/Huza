@@ -1,5 +1,6 @@
 # coding=utf-8
 import os
+os.environ['QT_API'] = 'pyside2'
 from huza.util.buildui import build_uidir
 
 

@@ -1,5 +1,3 @@
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction
 from loguru import logger
 
 from huza.base.action import createAction

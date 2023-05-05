@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import Qt
+from qtpy.QtWidgets import *
+from qtpy.QtCore import Qt
 
 from huza.ribbon.RibbonPane import RibbonPane
 

@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QSize
-from PyQt5.QtWidgets import QDockWidget
+from qtpy.QtCore import QSize
+from qtpy.QtWidgets import QDockWidget
 
 
 def init_docks(app):

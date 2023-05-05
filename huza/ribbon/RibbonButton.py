@@ -1,8 +1,5 @@
-from PyQt5 import Qt
-from PyQt5.QtCore import QSize
-from PyQt5.QtWidgets import *
-
-
+from qtpy.QtCore import QSize, Qt
+from qtpy.QtWidgets import *
 
 from huza.ribbon.qss.ribbonsmallbuttonqss import ribbonsmallbuttonqss
 from huza.ribbon.qss.ribbosbutton import ribbonbuttonqss
@@ -11,7 +8,7 @@ from huza.ribbon.scale import gui_scale
 
 class RibbonButton(QToolButton):
     def __init__(self, owner, action, is_large):
-        QPushButton.__init__(self, owner)
+        super(RibbonButton, self).__init__(owner)
         # sc = 1
         sc = gui_scale()
         self._actionOwner = action
@@ -25,10 +22,10 @@ class RibbonButton(QToolButton):
             self.setMinimumHeight(75 * sc)
             self.setMaximumHeight(80 * sc)
             self.setStyleSheet(ribbonbuttonqss)
-            self.setToolButtonStyle(3)
+            self.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
             self.setIconSize(QSize(32 * sc, 32 * sc))
         else:
-            self.setToolButtonStyle(2)
+            self.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
             self.setMaximumWidth(120 * sc)
             self.setIconSize(QSize(16 * sc, 16 * sc))
             self.setStyleSheet(ribbonsmallbuttonqss)

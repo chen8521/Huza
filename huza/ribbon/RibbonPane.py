@@ -1,6 +1,6 @@
-from PyQt5 import QtGui
-from PyQt5.Qt import Qt
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QGridLayout
+from qtpy import QtGui
+from qtpy.QtCore import Qt
+from qtpy.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QGridLayout
 
 
 from huza.ribbon.qss.ribbonpaneqss import ribbotbuttonqss
