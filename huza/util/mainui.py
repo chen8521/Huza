@@ -19,7 +19,10 @@ def get_dock(mainui, dock_name: str) -> QDockWidget:
 
 def get_dock_current_ui(mainui, dock_name: str):
     if dock_name in mainui.docks:
-        return mainui.docks.get(dock_name).widget().ui()
+        widget = mainui.docks.get(dock_name).widget()
+        if widget is None:
+            return None
+        return widget.ui()
     return None
 
 
