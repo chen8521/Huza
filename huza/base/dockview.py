@@ -30,6 +30,15 @@ class DockView(object):
     def get_dock(self, dock_name):
         return get_dock(self.mainui, dock_name)
 
+    def get_all_dock(self):
+        return get_all_dock(self.mainui)
+
+    def get_all_action(self):
+        return get_all_action(self.mainui)
+
+    def get_all_dockview(self):
+        return get_all_dockview(self.mainui)
+
     def get_dock_current_ui(self, dock_name):
         return get_dock_current_ui(self.mainui, dock_name)
 

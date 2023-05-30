@@ -19,6 +19,9 @@ class MainWindow_Form(object):
     get_dock_current_ui = get_dock_current_ui
     get_dock_ui = get_dock_ui
     del_dock_ui = del_dock_ui
+    get_all_dock = get_all_dock
+    get_all_action = get_all_action
+    get_all_dockview = get_all_dockview
     get_ui = get_ui
 
     def __init__(self, extra, icon_list):

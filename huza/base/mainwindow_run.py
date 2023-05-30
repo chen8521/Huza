@@ -47,6 +47,15 @@ class MainWindowRun(object):
     def init_docks(self, docks: dict, layout: list):
         self.window.init_docks(docks, layout)
 
+    def get_all_dock(self):
+        return self.window.get_all_dock
+
+    def get_all_action(self):
+        return self.window.get_all_action
+
+    def get_all_dockview(self):
+        return self.window.get_all_dockview
+
     def emit(self, signal, data):
         self.window.emit(signal, data)
 
