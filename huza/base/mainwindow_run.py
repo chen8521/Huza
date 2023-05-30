@@ -48,13 +48,13 @@ class MainWindowRun(object):
         self.window.init_docks(docks, layout)
 
     def get_all_dock(self):
-        return self.window.get_all_dock
+        return self.window.get_all_dock()
 
     def get_all_action(self):
-        return self.window.get_all_action
+        return self.window.get_all_action()
 
     def get_all_dockview(self):
-        return self.window.get_all_dockview
+        return self.window.get_all_dockview()
 
     def emit(self, signal, data):
         self.window.emit(signal, data)
