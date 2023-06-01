@@ -100,8 +100,8 @@ class MainWindowRun(object):
     def get_dock_current_ui(self, dock_name):
         return get_dock_current_ui(self.window, dock_name)
 
-    def set_dock_view(self, name, displayname, dockname, formclass):
-        return self.window.set_dock_view(name, displayname, dockname, formclass)
+    def set_dock_view(self, name, displayname, dockname, formclass, showthisview=True):
+        return self.window.set_dock_view(name, displayname, dockname, formclass, showthisview)
 
     def _init_log(self):
         try:

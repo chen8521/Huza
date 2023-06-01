@@ -38,7 +38,7 @@ def init_docks(self, docks: dict, layout: list):
             self.form.splitDockWidget(self.docks[d1], self.docks[d2], Orientiondict[ori])
 
 
-def setDockView(self, name, displayname, dockname, formclass):
+def setDockView(self, name, displayname, dockname, formclass, showthisview=True):
     def _check_name_exist(name):
         """保证dockviews下的id唯一"""
         for k, v in self.dockviews.items():
@@ -51,7 +51,8 @@ def setDockView(self, name, displayname, dockname, formclass):
     if dock.windowTitle() == name:
         return
     dock.setWindowTitle(displayname)
-    dock.setVisible(True)
+    if showthisview:
+        dock.setVisible(True)
     dockviews = self.dockviews[dockname]
     if name in dockviews:
         w = dockviews.get(name)
