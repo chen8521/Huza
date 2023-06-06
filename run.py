@@ -32,4 +32,5 @@ if __name__ == '__main__':
     app.set_init_signal_func(init_signal)
     app.set_close_func(lambda s: print(s))
     app.set_close_info('test', 'test')
+    app.set_splash_pic(app.icon_list.default.get_picmap('splash'))
     app.run()

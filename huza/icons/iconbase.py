@@ -7,6 +7,7 @@ class IconHandlerBase:
     def __init__(self):
         self._qicon_cache = {}
         self._icon_database = {}
+        self._qpixmap_cache = {}
 
     def _set_img_database(self, img_data_base):
         self._icon_database.update(img_data_base)
@@ -50,21 +51,21 @@ class IconHandler(IconHandlerBase):
             if len_icon_db < 3:
                 data, filetype = icon_from_db
                 try:
-                    return self._qicon_cache[data]
+                    return self._qpixmap_cache[data]
                 except:
                     icon = QtGui.QPixmap.fromImage(
                         QtGui.QImage().fromData(QtCore.QByteArray.fromBase64(bytes(data, encoding='utf-8')),
                                                 format=filetype))
-                    self._qicon_cache[data] = icon
+                    self._qpixmap_cache[data] = icon
             else:
                 data, filetype, data2 = icon_from_db
                 try:
-                    return self._qicon_cache[data]
+                    return self._qpixmap_cache[data]
                 except:
                     icon = QtGui.QPixmap.fromImage(
                         QtGui.QImage().fromData(QtCore.QByteArray.fromBase64(bytes(data, encoding='utf-8')),
                                                 format=filetype))
-                    self._qicon_cache[data] = icon
+                    self._qpixmap_cache[data] = icon
 
             return icon
         return None
