@@ -16,7 +16,7 @@ def main():
     parser.description = 'Huza 命令行工具'
     parser.add_argument("-genimg", help="生成图片集文件", action='store_true')
     parser.add_argument('-i', "--input", help="输入目录", default='.')
-    parser.add_argument('-o', "--output", help="计算包描述", default='.')
+    parser.add_argument('-o', "--output", help="输出目录", default='.')
 
     args = parser.parse_args()
     if args.genimg:

@@ -10,6 +10,7 @@ def init_docks(app):
     d2 = QDockWidget("2")
     d2.setMinimumWidth(280)
     d2.setMinimumHeight(300)
+    d2.setMaximumWidth(400)
     d2.setFeatures(QDockWidget.AllDockWidgetFeatures)
 
     d3 = QDockWidget("3")
